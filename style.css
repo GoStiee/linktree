@@ -1,0 +1,165 @@
+/* Global styles */
+body {
+    background: linear-gradient(to right, #0f0f23, #353575);
+    color: lightgray;
+    font-family: 'Trebuchet MS', sans-serif;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+}
+
+/* Container with "glassmorphism" effect */
+.container {
+    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    width: 80%;
+    max-width: 400px;
+    animation: fadeIn 0.8s ease-out forwards;
+}
+
+/* Fade-in effect for the container and footer */
+@keyframes fadeIn {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Squircle profile picture */
+.profile-pic {
+    width: 150px;
+    height: 150px;
+    border-radius: 25%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.profile-pic:hover {
+    transform: scale(1.1);
+}
+
+/* Glowing heading text */
+h2 {
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    animation: glow 2s infinite alternate ease-in-out;
+}
+
+@keyframes glow {
+    0% { text-shadow: 0 0 5px rgba(255, 255, 255, 0.3); }
+    100% { text-shadow: 0 0 15px rgba(255, 255, 255, 0.7); }
+}
+
+/* Link buttons with glint effect when hovering */
+.links a {
+    background-color: rgba(255, 255, 255, 0.15);
+    padding: 12px;
+    display: block;
+    margin: 10px;
+    border-radius: 10px;
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+/* Glint effect appears only on hover */
+.links a::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 250%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent 40%, rgba(255, 255, 255, 0.6) 50%, transparent 60%);
+    transform: translateX(-100%);
+    opacity: 0;
+}
+
+/* Activate glint on hover with continuous motion */
+.links a:hover::before {
+    opacity: 1;
+    animation: glintLoop 1.5s linear infinite;
+}
+
+/* Seamlessly looping glint */
+@keyframes glintLoop {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+/* Hover effect - smooth scaling */
+.links a:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+    transform: scale(1.05);
+}
+
+/* Interactive Button Press Effect, Makes the button smaler when clicked */
+.links a:active {
+    transform: scale(0.95);
+}
+
+/* Footer styling */
+.thanks {
+    font-size: 14px;
+    color: white;
+    text-decoration: none;
+    cursor: default;
+    opacity: 0;
+    transform: translateY(10px);
+    animation: fadeIn 1s ease-out forwards 0.5s;
+}
+
+/* Fullscreen Overlay */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(15, 15, 35, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
+    z-index: 998;
+}
+
+/* Large Icon of clicked link */
+.overlay i {
+    font-size: 100px; /* Edit this or */
+    color: white;
+    opacity: 0;
+    transform: scale(0.5); /* or this to change size */
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+}
+
+.copyright {
+    position: fixed;
+    bottom: 5px;
+    right: 5px; /* Change to left: 'X'px; for bottom-left */
+    font-size: 14px;
+    color: gray;
+    font-family: Arial, sans-serif;
+    opacity: 0.7;
+    transition: color 0.3s ease-in-out;
+    z-index: 999; /* Always on top baby (makes the copyright always appear above everything else) */
+}
+
+.copyright a {
+    text-decoration: none;
+    color: inherit;
+    cursor: text;
+}
+
+.copyright:hover {
+    color: #ffcc00;
+}
