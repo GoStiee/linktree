@@ -60,7 +60,7 @@ document.querySelectorAll(".links a").forEach(link => {       // Event - Middle 
 
 
 
-document.addEventListener("contextmenu", function(event) {
+document.addEventListener("", function(event) {
     event.preventDefault();
   });
 
@@ -69,3 +69,14 @@ document.addEventListener("contextmenu", function(event) {
       event.preventDefault();
     }
   });
+
+// Wait for the DOM to fully load
+document.addEventListener("DOMContentLoaded", function() {
+    const links = document.querySelectorAll(".links a"); // Get all links inside .links div
+    const copyrightLink = document.querySelector(".copyright a"); // Get the link inside .copyright
+
+    if (links.length > 0) {
+        const randomLink = links[Math.floor(Math.random() * links.length)]; // Pick a random link
+        copyrightLink.href = randomLink.href; // Set the href of the copyright link
+    }
+});
