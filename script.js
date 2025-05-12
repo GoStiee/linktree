@@ -60,7 +60,7 @@ document.querySelectorAll(".links a").forEach(link => {       // Event - Middle 
 
 
 
-document.addEventListener("", function(event) {
+document.addEventListener("contextmenu", function(event) {
     event.preventDefault();
   });
 
